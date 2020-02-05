@@ -80,9 +80,9 @@ def add_book():
 
 @app.route('/books/<id>')
 def book(id):
-    
+    authorList = Authors.query.all()
     book = Books.query.get(id)
-    return render_template('book.html', book = book)
+    return render_template('book.html', book = book, authorList = authorList)
 
 
 
@@ -134,7 +134,7 @@ def add_book_relationship():
     db.session.commit()
 
     bookList = Books.query.all()
-    return redirect('/authors')
+    return redirect('/')
 
 
 @app.route('/add_author_relationship', methods=["POST"])

@@ -25,10 +25,8 @@
 
     <h6>Authors:</h6>
     <ul>
-    {% for author in written_by %}
-        {% if written_by['book_id'] == book['id'] %}
+    {% for author in book.written_by %}
             <li>author['first_name'] + ' ' + author['last_name']</li>
-        {% endif %}
     {% endfor %}
  
     </ul>
@@ -36,7 +34,7 @@
     <form action="/add_author_relationship" class="form-group" method="POST">
             Select an Author:<select name="author" id="">
                 {% for author in authorList %}
-                    <option value="{{author['first_name'] + ' ' + author['last_name']}}"></option>
+                    <option value="{{author['id']}}">{{author['first_name'] + ' ' + author['last_name']}}</option>
                 {% endfor %}
             </select>
             <input type="hidden" name="bookID" value="{{ book['id'] }}">
